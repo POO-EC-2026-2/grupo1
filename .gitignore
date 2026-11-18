@@ -22,3 +22,14 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Permitir bibliotecas JAR do ORMLite e SQLite na pasta +libs para o BlueJ
+!+libs/*.jar
+
+# Ignorar banco de dados SQLite local e arquivos auxiliares
+alphafield.db
+alphafield.db-journal
+bluej.pkh
+AGENTS.md
+CONTEXTO_PROJETO.md
+notion_alphafield/
