@@ -97,7 +97,7 @@ Os artefatos detalhados da atividade **[LAB] AT-11-17: Básico de UML com PlantU
 
 ### 4.1. Diagrama de classes geral
 
-![Diagrama de Classes Geral](./docs/uml/imagens/01_ian_classes.png)
+![Diagrama de Classes Geral](./docs/uml/imagens/01_uml_ian_classes.png)
 
 ### 4.2. Diagrama de casos de uso
 
@@ -105,7 +105,7 @@ Os artefatos detalhados da atividade **[LAB] AT-11-17: Básico de UML com PlantU
 
 ### 4.3. Diagrama de sequência — saída de estoque
 
-![Diagrama de Sequência - Saída de Estoque](./docs/uml/imagens/02_pedro_sequencia.png)
+![Diagrama de Sequência - Saída de Estoque](./docs/uml/imagens/02_uml_pedro_sequencia.png)
 
 ```
 
