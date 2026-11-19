@@ -76,4 +76,4 @@ Usuario "1" <-- "0..*" Movimentacao
 @enduml
 ```
 ### Visualização do Diagrama
-![Diagrama UML](01_uml_ian_classes.png)
+![Diagrama UML](./imagens/01_uml_ian_classes.png)
