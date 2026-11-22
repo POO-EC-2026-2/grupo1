@@ -2,7 +2,7 @@
 
 > **Universidade Federal de Goiás (UFG) — Engenharia de Computação**  
 > **Disciplina:** Programação Orientada a Objetos (POO) | **Docente:** Prof. Marcelo Akira Inuzuka  
-> **Status em 18/11/2026:** Etapa 1 em execução — conclusão planejada para 02/12/2026
+> **Status:** Etapa 1 em execução
 
 ---
 
@@ -43,25 +43,25 @@ Desenvolver uma aplicação desktop em Java com interface gráfica em **JavaFX**
 4. **Robustez com exceções personalizadas:** validar entradas e permissões com `DadosInvalidosException`, `EstoqueInsuficienteException` e `OperacaoNaoPermitidaException`.
 5. **Autenticação local simples:** conferir login e senha no SQLite e aplicar permissões por perfil. Nesta etapa acadêmica não há criptografia de senha, JWT ou autenticação remota.
 
-### 2.3. Evolução técnica: JavaFX e BlueJ
+### 2.3. Decisões técnicas e interface em JavaFX
 
-Após as aulas práticas de JavaFX com banco de dados, ORM e collections, a equipe adotou **JavaFX + ORMLite/SQLite + ArrayList**. Para garantir compilação no **BlueJ**, a interface (`AlphafieldApp`) e os estilos (`EstiloVisual`) foram construídos em classes Java puras, sem FXML, CSS externo ou `module-info.java`.
+Após as aulas práticas de JavaFX com banco de dados, ORM e collections, a equipe adotou **JavaFX + ORMLite/SQLite + ArrayList**. Para manter o projeto simples, portátil e fácil de compilar em diferentes ambientes, a interface (`AlphafieldApp`) e os estilos (`EstiloVisual`) foram construídos em classes Java puras, sem FXML, CSS externo ou `module-info.java`.
 
 ---
 
-## Seção 3 — Divisão de Tarefas, Responsabilidades e Prazos
+## Seção 3 — Divisão de Tarefas e Responsabilidades
 
 | Integrante | GitHub | Cargo | Responsabilidades e módulos | Issues (Etapa 1) |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pedro Henrique Machado Benício** | `@phmbenicio` | **Líder (Maintainer)** | Gestão de branches/PRs e Kanban, `Database.java`, movimentações e `EstoqueController.java`. | `#1`, `#2`, `#3` |
+| **Pedro Henrique Machado Benício** | `@phmbenicio` | **Líder (Maintainer)** | Gestão de branches/PRs, `Database.java`, movimentações e `EstoqueController.java`. | `#1`, `#2`, `#3` |
 | **Ian Nascimento Santos Costa e Souza** | `@ianz3` | **Arquiteto** | UML em PlantUML, documentação, `Categoria.java`, `CategoriaRepositorio.java` e `UsuarioRepositorio.java`. | `#12`, `#13` |
 | **Marcelo Soares Martins** | `@msoaresmartins` | **QA / Testes** | Exceções personalizadas e hierarquia `Usuario`, `Gerente` e `Operador`. | `#10`, `#11` |
 | **João Pedro Moreira Cavalcante** | `@xXJpm4Xx` | **Frontend** | `EstiloVisual.java`, `AlphafieldApp.java`, painel, `PieChart`, `TableView` e modais. | `#7`, `#8`, `#9` |
 | **João Guilherme Passos Rocha de Andrade** | `@52joaog22` | **Backend** | Produto, fornecedor, repositórios e buscas/filtros com `ArrayList`. | `#4`, `#5`, `#6` |
 
-### 3.1. Cronograma Diário de Execução e Commits (18/11/2026 a 02/12/2026)
+### 3.1. Organização de Entregas e Commits Previstos
 
-O trabalho será integrado em pequenas entregas diárias. Os cinco Pull Requests de modelagem são concluídos até **22/11/2026**, antes do prazo do LAB em 23/11. Os 13 commits da Etapa 1 terminam em **02/12/2026**, dois dias antes do prazo final de 04/12.
+O trabalho é integrado de forma incremental em pequenas entregas. A lista de Pull Requests e commits abaixo serve apenas como referência para a organização das tarefas da Etapa 1, podendo ser ajustada, dividida ou reordenada ao longo do desenvolvimento conforme a necessidade do grupo.
 
 | Entrega | Responsável | PR / commit previsto | Issue(s) |
 | --- | --- | --- | --- |
@@ -79,7 +79,7 @@ O trabalho será integrado em pequenas entregas diárias. Os cinco Pull Requests
 | Identidade visual JavaFX | João Pedro | Commit 12 `style(view): cria EstiloVisual` | #7 |
 | Telas JavaFX, painel, tabelas e revisão de integração | João Pedro / Pedro | Commit 13 `feat(view): implementa AlphafieldApp e revisão da Etapa 1` | #8, #9, #3 |
 
-O `TesteSistema.java` base, com testes interativos e validação dos fluxos principais, integra o **Commit 11 da Etapa 1**. As Issues **#14** (refinamentos de filtros e badges) e **#15** (ampliação da suíte de QA com cenários de regressão) continuam planejadas somente para a **Etapa 2**, iniciada após 04/12/2026. Elas não fazem parte dos 13 commits acima.
+O `TesteSistema.java` base, com testes interativos e validação dos fluxos principais, integra o escopo planejado da **Etapa 1**. As Issues **#14** (refinamentos de filtros e badges) e **#15** (ampliação da suíte de QA com cenários de regressão) seguem planejadas somente para a **Etapa 2**, fora das entregas iniciais listadas acima.
 
 
 
@@ -107,7 +107,6 @@ Os artefatos detalhados da atividade **[LAB] AT-11-17: Básico de UML com PlantU
 
 ![Diagrama de Sequência - Saída de Estoque](./docs/uml/imagens/02_uml_pedro_sequencia.png)
 
-```
 
 ---
 
