@@ -43,9 +43,15 @@ Desenvolver uma aplicação desktop em Java com interface gráfica em **JavaFX**
 4. **Robustez com exceções personalizadas:** validar entradas e permissões com `DadosInvalidosException`, `EstoqueInsuficienteException` e `OperacaoNaoPermitidaException`.
 5. **Autenticação local simples:** conferir login e senha no SQLite e aplicar permissões por perfil. Nesta etapa acadêmica não há criptografia de senha, JWT ou autenticação remota.
 
-### 2.3. Decisões técnicas e interface em JavaFX
+### 2.3. Decisões técnicas, ambiente e interface em JavaFX
 
 Após as aulas práticas de JavaFX com banco de dados, ORM e collections, a equipe adotou **JavaFX + ORMLite/SQLite + ArrayList**. Para manter o projeto simples, portátil e fácil de compilar em diferentes ambientes, a interface (`AlphafieldApp`) e os estilos (`EstiloVisual`) foram construídos em classes Java puras, sem FXML, CSS externo ou `module-info.java`.
+
+Em relação ao ambiente de desenvolvimento, o projeto foi iniciado no **BlueJ**, mas a equipe optou por migrar para o **Visual Studio Code (VS Code)** ao longo do desenvolvimento por oferecer uma visualização mais clara e prática da estrutura de pacotes, classes e integrações com Git.
+
+### 2.4. Melhorias futuras (estornos auditáveis)
+
+Durante o planejamento, a equipe considerou implementar uma mecânica de rastreamento para estornos: em vez de remover o lançamento estornado do histórico, o sistema manteria o registro com a indicação de **quem realizou o estorno** e **qual foi o motivo**, facilitando a conferência posterior das correções. Por questões de prazo nesta etapa, a funcionalidade não entrou no escopo atual e ficou registrada como um aprimoramento futuro caso haja tempo hábil.
 
 ---
 
