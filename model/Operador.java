@@ -12,6 +12,14 @@ public class Operador extends Usuario {
     }
 
     @Override
+    public void setPerfil(String perfil) {
+        if (perfil == null || !"OPERADOR".equalsIgnoreCase(perfil.trim())) {
+            throw new IllegalArgumentException("Uma conta Operador deve ter o perfil OPERADOR.");
+        }
+        super.setPerfil("OPERADOR");
+    }
+
+    @Override
     public boolean podeGerenciarUsuarios() {
         return false;
     }
