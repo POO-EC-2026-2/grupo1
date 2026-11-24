@@ -28,7 +28,7 @@ public class Usuario {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
-        this.perfil = perfil;
+        setPerfil(perfil);
     }
 
     public boolean podeGerenciarUsuarios() {
@@ -76,7 +76,14 @@ public class Usuario {
     }
 
     public void setPerfil(String perfil) {
-        this.perfil = perfil;
+        if (perfil == null) {
+            throw new IllegalArgumentException("O perfil deve ser GERENTE ou OPERADOR.");
+        }
+        String perfilPadronizado = perfil.trim().toUpperCase();
+        if (!"GERENTE".equals(perfilPadronizado) && !"OPERADOR".equals(perfilPadronizado)) {
+            throw new IllegalArgumentException("O perfil deve ser GERENTE ou OPERADOR.");
+        }
+        this.perfil = perfilPadronizado;
     }
 
     @Override
