@@ -1,12 +1,13 @@
 package repository;
 
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
-import java.nio.file.Files;
 import com.j256.ormlite.misc.TransactionManager;
-import java.io.IOException;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.SQLException;
+import java.util.concurrent.Callable;
 import model.Categoria;
 import model.Fornecedor;
 import model.Movimentacao;
@@ -25,12 +26,7 @@ public class Database {
             String separador = urlBanco.contains("?") ? "&" : "?";
             ConnectionSource nova = new JdbcPooledConnectionSource(urlBanco + separador + "foreign_keys=on");
             try {
-                // As tabelas principais precisam existir antes das chaves estrangeiras.
-                TableUtils.createTableIfNotExists(nova, Categoria.class);
-                TableUtils.createTableIfNotExists(nova, Fornecedor.class);
-                TableUtils.createTableIfNotExists(nova, Usuario.class);
-                TableUtils.createTableIfNotExists(nova, Produto.class);
-                TableUtils.createTableIfNotExists(nova, Movimentacao.class);
+                criarTabelas(nova);
                 connectionSource = nova;
             } catch (SQLException e) {
                 nova.closeQuietly();
@@ -38,6 +34,31 @@ public class Database {
             }
         }
         return connectionSource;
+    }
+
+    private static void criarTabelas(ConnectionSource conexao) throws SQLException {
+        emTransacao(conexao, () -> {
+            TableUtils.createTableIfNotExists(conexao, Categoria.class);
+            TableUtils.createTableIfNotExists(conexao, Fornecedor.class);
+            TableUtils.createTableIfNotExists(conexao, Usuario.class);
+            TableUtils.createTableIfNotExists(conexao, Produto.class);
+            TableUtils.createTableIfNotExists(conexao, Movimentacao.class);
+            return null;
+        });
+    }
+
+    // Os repositorios participam da transacao ja iniciada pelo controlador.
+    public static <T> T emTransacao(ConnectionSource conexao, Callable<T> acao) throws SQLException {
+        if (conexao.getSpecialConnection(null) == null) {
+            return TransactionManager.callInTransaction(conexao, acao);
+        }
+        try {
+            return acao.call();
+        } catch (SQLException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new SQLException("Falha na operacao.", e);
+        }
     }
 
     public static synchronized void configurarBanco(String novaUrl) throws SQLException {
@@ -75,7 +96,7 @@ public class Database {
             throw new SQLException("Limpeza permitida apenas na base descartavel desta execucao.");
         }
         ConnectionSource conexao = getConnection();
-        TransactionManager.callInTransaction(conexao, () -> {
+        emTransacao(conexao, () -> {
             // A ordem evita problemas com as chaves estrangeiras do historico.
             TableUtils.clearTable(conexao, Movimentacao.class);
             TableUtils.clearTable(conexao, Produto.class);

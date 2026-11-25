@@ -9,8 +9,7 @@ public class Movimentacao {
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField(foreign = true, foreignAutoRefresh = true, canBeNull = false,
-            columnDefinition = "INTEGER NOT NULL REFERENCES produtos(id) ON DELETE RESTRICT")
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, canBeNull = false)
     private Produto produto;
 
     @DatabaseField(canBeNull = false)
@@ -22,8 +21,7 @@ public class Movimentacao {
     @DatabaseField(canBeNull = false)
     private String dataHora;
 
-    @DatabaseField(foreign = true, foreignAutoRefresh = true, canBeNull = false,
-            columnDefinition = "INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE RESTRICT")
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, canBeNull = false)
     private Usuario usuarioResponsavel;
 
     @DatabaseField
